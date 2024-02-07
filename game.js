@@ -22,7 +22,7 @@ var scoreText;
 var gameOver = false;
 var stars;
 var bombs;
-var cursors;
+
 var game = new Phaser.Game(config);
 
 function preload() {
@@ -129,8 +129,7 @@ function collectStar(player, star) {
     score += 10;
     scoreText.setText('Score: ' + score);
 
-    if (stars.countActive(true) === 0)
-    {
+    if (stars.countActive(true) === 0) {
         stars.children.iterate(function (child) {
 
             child.enableBody(true, child.x, 0, true, true);
@@ -145,4 +144,15 @@ function collectStar(player, star) {
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
 
     }
+}
+
+function hitBomb (player, bomb)
+{
+    this.physics.pause();
+
+    player.setTint(0xff0000);
+
+    player.anims.play('turn');
+
+    gameOver = true;
 }
