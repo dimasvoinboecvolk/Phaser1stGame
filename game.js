@@ -99,6 +99,8 @@ function create() {
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
+    this.add.text(450, 450, 'good luck', { fontSize: '50px', fill: '#456' });
+
 }
 
 function update() {
